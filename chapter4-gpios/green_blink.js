@@ -1,8 +1,15 @@
 var onoff = require('onoff'); //#A
 
 var Gpio = onoff.Gpio,
+  pir = new Gpio(15, 'in', 'both'),
   led = new Gpio(21, 'out'), //#B
   interval;
+
+
+pir.watch(function (err, value) {
+	if (err) exit(err);
+	console.log(if (value) 'there is some one!' else 'not anymore!');
+});
 
 interval = setInterval(function () { //#C
   var value = (led.readSync() + 1) % 2; //#D
@@ -13,8 +20,9 @@ interval = setInterval(function () { //#C
 
 process.on('SIGINT', function () { //#F
   clearInterval(interval);
-  led.writeSync(0); //#G
+  led.writeSync(0);
   led.unexport();
+  pir.unexport();
   console.log('Bye, bye!');
   process.exit();
 });
