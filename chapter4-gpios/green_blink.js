@@ -8,7 +8,7 @@ var Gpio = onoff.Gpio,
 
 pir.watch(function (err, value) {
 	if (err) exit(err);
-	console.log(if (value) 'there is some one!' else 'not anymore!');
+	console.log(if (value) {'there is some one!'} else {'not anymore!'});
 });
 
 interval = setInterval(function () { //#C
