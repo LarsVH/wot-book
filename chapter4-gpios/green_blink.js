@@ -7,16 +7,25 @@ var Gpio = onoff.Gpio,
 
 
 pir.watch(function (err, value) {
-	if (err) exit(err);
-	console.log(value ? 'there is some one!' : 'not anymore!');
+	if (err) 
+		{exit(err);
+			  	}
+	else if (value == 1) {
+	console.log(value + 'there is some one');
+	led.write(value); }
+	else {
+	console.log(value + 'not anymore!');
+	led.write(value);
+	}
 });
 
-interval = setInterval(function () { //#C
+/*interval = setInterval(function () { //#C
   var value = (led.readSync() + 1) % 2; //#D
   led.write(value, function() { //#E
     console.log("Changed LED state to: " + value);
   });
 }, 2000);
+*/
 
 process.on('SIGINT', function () { //#F
   clearInterval(interval);
