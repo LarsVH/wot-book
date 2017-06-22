@@ -3,7 +3,6 @@
  */
 
 var resources = require('../../resources/model');
-var Gpio = require('onoff').Gpio;
 
 var interval, sensor;
 var model = resources.pi.sensors.pir;
