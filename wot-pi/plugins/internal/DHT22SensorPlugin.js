@@ -2,6 +2,7 @@
  * Created by lars on 22.06.17.
  */
 var resources = require('./../../resources/model');
+    utils = require('./../../utils/utils.js');
 
 var interval, sensor;
 var model = resources.pi.sensors;
