@@ -61,8 +61,13 @@ function connectHardware() {
             }, localParams.frequency);
         }
     };
-    sensor.initialize()
-    console.toLocaleString('Hardware %s sensor started', pluginName);
+    if(sensor.initialize()) {
+        console.toLocaleString('Hardware %s sensor started', pluginName);
+        sensor.read();
+    } else{
+        console.warn('Failed to initialize sensor %s', pluginName);
+    }
+
 }
 
 function showValue() {
