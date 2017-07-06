@@ -21,7 +21,6 @@ exports.start = function(params){
 
 
 exports.stop = function(){
-
     if(params.simulate){
         clearInterval(interval);
     } else{
@@ -41,16 +40,12 @@ function simulate() {
 
 
 function connectHardware() {
-    console.log("here1");
     var sensorDriver = require('node-dht-sensor');
-    console.log("here2");
     var sensor = {                                  // sensor is een MAP met 2 keys "initialize" en "read" met als values bijbehorende functies
         initialize: function() {
-            console.log("initializing driver");
             return sensorDriver.initialize(22, model.temperature.gpio); // Type sensor: DTH >22<, GPIO pin
         },
         read: function () {
-            console.log("Read");
             var readout = sensorDriver.read();
             model.temperature.value = parseFloat(readout.temperature.toFixed(2)); // Model aanpassen met de nieuwe waarden
             model.humidity.value = parseFloat(readout.humidity.toFixed(2));
