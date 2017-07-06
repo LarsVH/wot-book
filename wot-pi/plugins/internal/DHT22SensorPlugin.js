@@ -43,6 +43,7 @@ function simulate() {
 function connectHardware() {
     console.log("here1");
     var sensorDriver = require('node-dht-sensor');
+    console.log("here2");
     var sensor = {                                  // sensor is een MAP met 2 keys "initialize" en "read" met als values bijbehorende functies
         initialize: function() {
             console.log("initializing driver");
@@ -60,6 +61,7 @@ function connectHardware() {
             }, localParams.frequency);
         }
     };
+    sensor.initialize()
     console.toLocaleString('Hardware %s sensor started', pluginName);
 }
 
