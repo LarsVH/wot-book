@@ -8,6 +8,7 @@ var express = require('express'),
     resources = require('./../resources/model'),
     cors = require('cors');
 
+var converter = require('./../middleware/converter');
 
 var app = express();
 
@@ -23,5 +24,7 @@ app.get('/pi', function (req, res) {
 app.get('/', function (req, res) {
     res.send('Welcome to the root. Go to /pi');
 });
+
+app.use(converter());
 
 module.exports = app;

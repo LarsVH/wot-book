@@ -8,24 +8,27 @@ var express = require('express'),
 
 
 // GET request '/'
-router.get('/', function(req, res){
-    res.send(resources.pi.sensors);
+router.get('/', function(req, res, next){
+    req.result = resources.pi.sensors;
+    next();
 });
 
 // GET request on '/pir'
-router.get('/pir', function(req, res){
-    res.send(resources.pi.sensors.pir);
+router.get('/pir', function(req, res, next){
+    req.result = resources.pi.sensors.pir;
+    next();
 });
 
 // GET request on '/temperature'
-router.get('/temperature', function (req,res) {
-    res.send(resources.pi.sensors.temperature);
-
+router.get('/temperature', function (req, res, next) {
+    req.result = resources.pi.sensors.temperature;
+    next();
 });
 
 // GET request on '/humidity'
-router.get('/humidity', function (req,res) {
-    res.send(resources.pi.sensors.humidity)
+router.get('/humidity', function (req,res, next) {
+    req.result = resources.pi.sensors.humidity;
+    next();
 });
 
 module.exports = router;
