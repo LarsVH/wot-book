@@ -10,11 +10,11 @@ module.exports = function() {
         console.info('Representation converter middleware called');
 
         if(req.result) {
-            if (req.accepts('json')) {
+            /*if (req.accepts('json')) {
                 console.info('JSON representation selected!');
                 res.send(req.result);
                 return;
-            }
+            }*/
 
             if (req.accepts('html')) {
                 console.info('HTML representation selected!');
